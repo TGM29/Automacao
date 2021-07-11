@@ -9,16 +9,18 @@ def send_whats():
     print("Message sent")
 
 def get_wheather():
-    cidade = 'Campos do Jordão'
     #Declare the browser
     browser = webdriver.Chrome()
-    #Open the site
-    browser.get("https://www.climatempo.com.br")
-    browser.find_element_by_xpath('//*[@id="bt_modalSearch_mobile"]/i').click()
-    browser.find_element_by_xpath('//*[@id="searchGeneralMobile"]').click()
-    browser.find_element_by_xpath('//*[@id="searchGeneralMobile"]').send_keys(cidade)
-    temp_min = browser.find_element_by_xpath('//*[@id="current-weather-temperature"]').get_property('nodeValue')
+    #Open Climatempo
+    browser.get('https://www.climatempo.com.br/previsao-do-tempo/cidade/420/camposdojordao-sp')
+    temp_min = browser.find_element_by_xpath('/html/body/div[4]/div[5]/div[4]/div[1]/div[2]/div[2]/div[2]/div[1]/ul/li[1]/div/p/span[1]').text
     print(temp_min)
+
+
+
+    #Open the site
+    dolar = browser.find_element_by_xpath('//*[@id="knowledge-currency__updatable-data-column"]/div[1]/div[2]/span[1]').get_attribute('data-value')
+
 
 
 get_wheather()
